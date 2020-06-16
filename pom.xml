@@ -58,10 +58,210 @@
 
 	<build>
 		<plugins>
+      <!-- 스프링 부트를 시작하고 종료하는 부분 설정 -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>pre integration test</id>
+            <goals>
+              <goal>start</goal>
+            </goals>
+          </execution>
+
+          <execution>
+            <id>post integration test</id>
+            <goals>
+              <goal>stop</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- npm 명령어 실행 플러그인 -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.6.0</version>
+        <executions>
+          <!-- npm 설치 -->
+          <execution>
+            <id>front-end install</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>prepare-package</phase>
+            <configuration>
+              <executable>npm</executable>
+              <arguments>
+                <argument>install</argument>
+              </arguments>
+            </configuration>
+          </execution>
+
+          <!-- 프론트엔드 단위 테스트 -->
+          <execution>
+            <id>front-end unit test</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>prepare-package</phase>
+            <configuration>
+              <executable>npm</executable>
+              <arguments>
+                <argument>run</argument>
+                <argument>test:unit</argument>
+              </arguments>
+            </configuration>
+          </execution>
+
+          <!-- 프론트엔드 빌드 -->
+          <execution>
+            <id>front-end build package</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>prepare-package</phase>
+            <configuration>
+              <executable>npm</executable>
+              <arguments>
+                <argument>run</argument>
+                <argument>build</argument>
+              </arguments>
+            </configuration>
+          </execution>
+
+          <!-- 프론트엔드 E2E 테스트 -->
+          <!-- Integration-test 페이즈에서 실행 -->
+          <execution>
+            <id>front-end e2e test</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>integration-test</phase>
+            <configuration>
+              <executable>npm</executable>
+              <arguments>
+                <argument>run</argument>
+                <argument>test:e2e</argument>
+              </arguments>
+            </configuration>
+          </execution>
+        </executions>
+        <configuration>
+          <workingDirectory>${basedir}/front-end</workingDirectory>
+        </configuration>
+      </plugin>
+
+      <!-- 프론트엔드 리소스를 복사하는 플러그인 -->
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <!-- HTML 템플릿 파일을 template 디렉토리에 복사 -->
+          <execution>
+            <id>copy front-end template</id>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <phase>prepare-package</phase>
+            <configuration>
+              <outputDirectory>${basedir}/src/main/resources/templates</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>front-end/dist</directory>
+                  <includes>
+                    <include>index.html</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+
+          <!-- HTML 템플릿 외의 정적 에셋을 static 디렉토리에 복사 -->
+          <execution>
+            <id>copy front-end static assets</id>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <phase>prepare-package</phase>
+            <configuration>
+              <outputDirectory>${basedir}/src/main/resources/static</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>front-end/dist</directory>
+                  <excludes>
+                    <exclude>index.html</exclude>
+                  </excludes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+
+          <!-- 목적지 디렉토리(/target)에 템플릿 파일 복사 -->
+          <!-- 복사 후 src/main/resources 디렉토리는 더는 사용하지 않음 -->
+          <execution>
+            <id>copy front-end template to target</id>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <phase>prepare-package</phase>
+            <configuration>
+              <outputDirectory>${basedir}/target/classes/templates</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>front-end/dist</directory>
+                  <excludes>
+                    <exclude>index.html</exclude>
+                  </excludes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+
+          <!-- 목적지 디렉토리(/target)에 정적 에셋 복사 -->
+          <!-- 복사 후 src/main/resources 디렉토리는 더는 사용하지 않음 -->
+          <execution>
+            <id>copy front-end assets to target</id>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <phase>prepare-package</phase>
+            <configuration>
+              <outputDirectory>${basedir}/target/classes/static</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>front-end/dist</directory>
+                  <excludes>
+                    <exclude>index.html</exclude>
+                  </excludes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- 기본 라이프 사이클 시작 전에 src/main/resources의 에셋을 깨끗이 제거하는 플러그인 -->
+      <!-- mvn clean 또는 mvn clean install 명령어로 실행 가능 -->
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>3.1.0</version>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>${basedir}/src/main/resources/static/static</directory>
+            </fileset>
+            <fileset>
+              <directory>${basedir}/src/main/resources/templates</directory>
+              <inlcudes>
+                <include>index.html</include>
+              </inlcudes>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>
 		</plugins>
 	</build>
 
