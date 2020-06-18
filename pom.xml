@@ -12,7 +12,7 @@
 	<artifactId>sckrollagile</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SckrollAgile</name>
-	<description>Sckroll's kanban board project for Spring Boot</description>
+	<description>Sckroll's kanban board project with Vue.js and Spring Boot</description>
 
 	<properties>
 		<java.version>1.10</java.version>
@@ -54,7 +54,7 @@
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
     </dependency>
-	</dependencies>
+ </dependencies>
 
 	<build>
 		<plugins>
@@ -255,9 +255,9 @@
             </fileset>
             <fileset>
               <directory>${basedir}/src/main/resources/templates</directory>
-              <inlcudes>
+              <includes>
                 <include>index.html</include>
-              </inlcudes>
+              </includes>
             </fileset>
           </filesets>
         </configuration>
