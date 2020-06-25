@@ -1,6 +1,6 @@
 package com.sckroll.sckrollagile.web.payload;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Set;
 
@@ -13,7 +13,6 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Before;
 import org.junit.Test;
 
-
 public class registrationPayloadTests {
 
 	private Validator validator;
@@ -25,7 +24,7 @@ public class registrationPayloadTests {
 	}
 
 	@Test
-	public void 빈_payload는_검증_실패() {
+	public void validate_빈_payload는_실패() {
 		RegistrationPayload payload = new RegistrationPayload();
 
 		Set<ConstraintViolation<RegistrationPayload>> violations =
@@ -34,7 +33,7 @@ public class registrationPayloadTests {
 	}
 
 	@Test
-	public void 유효하지_않은_이메일_주소는_검증_실패() {
+	public void validate_유효하지_않은_이메일_주소는_실패() {
 		RegistrationPayload payload = new RegistrationPayload();
 		payload.setUsername("sckroll");
 		payload.setEmailAddress("badEmailAddress");
@@ -46,7 +45,7 @@ public class registrationPayloadTests {
 	}
 
 	@Test
-	public void 이메일_주소가_100자가_넘으면_검증_실패() {
+	public void validate_이메일_주소가_100자가_넘으면_실패() {
 		// The maximium allowed localPart is 64 characters
 		// http://www.rfc-editor.org/errata_search.php?rfc=3696&eid=1690
 		int maxLocalParthLength = 64;
@@ -66,7 +65,7 @@ public class registrationPayloadTests {
 	}
 
 	@Test
-	public void 이메일_주소가_2자_미만이면_검증_실패() {
+	public void validate_사용자명이_2자_미만이면_실패() {
 		RegistrationPayload payload = new RegistrationPayload();
 		String usernameTooShort = RandomStringUtils.random(1);
 
@@ -80,7 +79,7 @@ public class registrationPayloadTests {
 	}
 
 	@Test
-	public void 사용자명이_50자가_넘으면_검증_실패() {
+	public void validate_사용자명이_50자가_넘으면_실패() {
 		RegistrationPayload payload = new RegistrationPayload();
 		String usernameTooLong = RandomStringUtils.random(51);
 
@@ -94,7 +93,7 @@ public class registrationPayloadTests {
 	}
 
 	@Test
-	public void 비밀번호가_6자_미만이면_검증_실패() {
+	public void validate_비밀번호가_6자_미만이면_실패() {
 		RegistrationPayload payload = new RegistrationPayload();
 		String passwordTooShort = RandomStringUtils.random(5);
 
@@ -108,7 +107,7 @@ public class registrationPayloadTests {
 	}
 
 	@Test
-	public void 비밀번호가_30자가_넘으면_검증_실패() {
+	public void validate_비밀번호가_30자가_넘으면_실패() {
 		RegistrationPayload payload = new RegistrationPayload();
 		String passwordTooLong = RandomStringUtils.random(31);
 

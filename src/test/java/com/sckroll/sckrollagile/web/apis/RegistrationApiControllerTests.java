@@ -23,7 +23,7 @@ import com.sckroll.sckrollagile.web.payload.RegistrationPayload;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(RegistrationApiController.class)
-public class RegistrationApiControllerTest {
+public class RegistrationApiControllerTests {
 
 	@Autowired
 	private MockMvc mvc;
@@ -32,13 +32,13 @@ public class RegistrationApiControllerTest {
 	private UserService serviceMock;
 
 	@Test
-	public void 빈_payload는_등록_실패_후_400_리턴() throws Exception {
+	public void register_빈_payload는_실패_후_400_리턴() throws Exception {
 		mvc.perform(post("/api/registrations"))
 			.andExpect(status().is(400));
 	}
 
 	@Test
-	public void 존재하는_사용자명은_등록_실패_후_400_리턴() throws Exception {
+	public void register_존재하는_사용자명은_실패_후_400_리턴() throws Exception {
 		RegistrationPayload payload = new RegistrationPayload();
 		payload.setUsername("exist");
 		payload.setEmailAddress("test@sckroll.com");
@@ -57,7 +57,7 @@ public class RegistrationApiControllerTest {
 	}
 
 	@Test
-	public void 존재하는_이메일_주소는_등록_실패_후_400_리턴() throws Exception {
+	public void register_존재하는_이메일_주소는_실패_후_400_리턴() throws Exception {
 		RegistrationPayload payload = new RegistrationPayload();
 		payload.setUsername("test");
 		payload.setEmailAddress("exist@sckroll.com");
@@ -76,7 +76,7 @@ public class RegistrationApiControllerTest {
 	}
 
 	@Test
-	public void 유효한_payload는_등록_성공_후_201_리턴() throws Exception {
+	public void register_유효한_payload는_성공_후_201_리턴() throws Exception {
 		RegistrationPayload payload = new RegistrationPayload();
 		payload.setUsername("test");
 		payload.setEmailAddress("test@sckroll.com");

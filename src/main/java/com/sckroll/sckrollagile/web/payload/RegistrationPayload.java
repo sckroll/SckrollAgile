@@ -22,7 +22,7 @@ public class RegistrationPayload {
 	private String password;
 
 	public String getUsername() {
-		return this.username;
+		return username;
 	}
 
 	public void setUsername(String username) {
@@ -30,7 +30,7 @@ public class RegistrationPayload {
 	}
 
 	public String getEmailAddress() {
-		return this.emailAddress;
+		return emailAddress;
 	}
 
 	public void setEmailAddress(String emailAddress) {
@@ -38,7 +38,7 @@ public class RegistrationPayload {
 	}
 
 	public String getPassword() {
-		return this.password;
+		return password;
 	}
 
 	public void setPassword(String password) {
