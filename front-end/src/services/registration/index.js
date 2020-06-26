@@ -5,7 +5,7 @@ export default {
     return new Promise((resolve, reject) => {
       axios.post('/registrations', detail).then(({ data }) => {
         resolve(data)
-      }).catch((err) => {
+      }).catch(err => {
         reject(err)
       })
     })

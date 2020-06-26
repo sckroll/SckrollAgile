@@ -2,10 +2,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="register-form">
-        <div class="logo-wrapper">
-          <img src="/static/images/logo.png" class="logo">
-          <div class="tagline">Sckroll's kanban board project</div>
-        </div>
+        <logo />
         <form @submit.prevent="submitForm">
           <div class="alert alert-danger failed" v-show="errorMessage">{{ errorMessage }}</div>
 
@@ -42,24 +39,22 @@
         </form>
       </div>
     </div>
-    <footer class="footer">
-      <span class="copyright">&copy; 2020 Sckroll</span>
-      <ul class="footer-links list-inline float-right">
-        <li class="list-inline-item"><a href="#">About</a></li>
-        <li class="list-inline-item"><a href="#">Terms of Service</a></li>
-        <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-        <li class="list-inline-item"><a href="https://github.com/sckroll/SckrollAgile" target="_blank">GitHub</a></li>
-      </ul>
-    </footer>
+    <page-footer />
   </div>
 </template>
 
 <script>
 import { required, email, minLength, maxLength, alphaNum } from 'vuelidate/lib/validators'
 import registrationService from '@/services/registration'
+import Logo from '@/components/Logo.vue'
+import PageFooter from '@/components/PageFooter.vue'
 
 export default {
   name: 'RegisterPage',
+  components: {
+    Logo,
+    PageFooter
+  },
   data () {
     return {
       form: {
@@ -101,7 +96,7 @@ export default {
       // TODO: 데이터 검증
       registrationService.register(this.form).then(() => {
         this.$router.push({ name: 'LoginPage' })
-      }).catch((err) => {
+      }).catch(err => {
         this.errorMessage = '회원가입에 실패하였습니다. 원인: ' + (err.message ? err.message : 'Unknown')
       })
     }
@@ -110,30 +105,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .container {
-    max-width: 900px;
-  }
-  .register-form {
-    margin-top: 50px;
-    max-width: 320px;
-  }
-  .logo-wrapper {
-    text-align: center;
-    margin-bottom: 40px;
-
-    .logo {
-      max-width: 300px;
-      margin: 0 auto;
-    }
-
-    .tagline {
-      line-height: 180%;
-      color: #666;
-    }
-  }
-  .footer {
-    width: 100%;
-    line-height: 40px;
-    margin-top: 50px;
-  }
+.container {
+  max-width: 900px;
+}
+.register-form {
+  margin-top: 50px;
+  max-width: 320px;
+}
 </style>
