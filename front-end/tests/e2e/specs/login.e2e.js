@@ -19,11 +19,11 @@ module.exports = {
   //     .end()
   // }
 
-  'login test': function (browser) {
-    browser
-      .url(process.env.VUE_DEV_SERVER_URL + 'login')
-      .waitForElementVisible('#app', 5000)
-      .assert.containsText('h1', 'SckrollAgile')
-      .end()
-  }
+  // 'login test': function (browser) {
+  //   browser
+  //     .url(process.env.VUE_DEV_SERVER_URL + 'login')
+  //     .waitForElementVisible('#app', 5000)
+  //     .assert.containsText('h1', 'SckrollAgile')
+  //     .end()
+  // }
 }
