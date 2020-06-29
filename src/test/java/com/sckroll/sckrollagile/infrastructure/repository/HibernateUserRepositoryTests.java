@@ -150,6 +150,7 @@ public class HibernateUserRepositoryTests {
 		repository.save(newUser);
 
 		User found = repository.findByUsername(username);
-		assertEquals("Email address should match", emailAddress, found.getEmailAddress());
+		assertEquals("Email address should match",
+			emailAddress, found.getEmailAddress());
 	}
 }
