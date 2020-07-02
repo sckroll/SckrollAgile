@@ -6,6 +6,7 @@
         <h2 class="section-title">
           {{ $t('homePage.personalBoards') }}
         </h2>
+
         <div class="boards d-flex align-content-start flex-wrap">
           <div
             class="board list-inline-item"
@@ -19,6 +20,32 @@
           <div
             class="board add list-inline-item"
             @click="createBoard()"
+          >
+            <font-awesome-icon icon="plus" />
+            <div>{{ $t('homePage.createNewBoard') }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="boards-section"
+        v-for="team in teamBoards"
+        :key="team.id"
+      >
+        <h2 class="section-title">{{ team.name }}</h2>
+        <div class="boards d-flex align-content-start flex-wrap">
+          <div
+            class="board list-inline-item"
+            v-for="board in team.boards"
+            :key="board.id"
+            @click="openBoard(board)"
+          >
+            <h3>{{ board.name }}</h3>
+            <p>{{ board.description }}</p>
+          </div>
+          <div
+            class="board add list-inline-item"
+            @click="createBoard(team)"
           >
             <font-awesome-icon icon="plus" />
             <div>{{ $t('homePage.createNewBoard') }}</div>

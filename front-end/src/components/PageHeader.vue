@@ -6,7 +6,10 @@
 
 <script>
 export default {
-  name: 'PageHeader'
+  name: 'PageHeader',
+  created() {
+    this.$store.dispatch('getMyData')
+  },
 }
 </script>
 
