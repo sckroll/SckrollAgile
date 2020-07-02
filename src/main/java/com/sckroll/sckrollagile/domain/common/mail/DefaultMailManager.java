@@ -49,6 +49,7 @@ public class DefaultMailManager implements MailManager {
 
 		try {
 			Template template = configuration.getTemplate(templateName);
+
 			Map<String, Object> model = new HashMap<>();
 			if (variables != null) {
 				for (MessageVariable variable : variables) {

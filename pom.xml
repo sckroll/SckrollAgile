@@ -196,7 +196,8 @@
               <executable>npm</executable>
               <arguments>
                 <argument>run</argument>
-                <argument>test:e2e</argument>
+                <!-- <argument>test:e2e</argument> -->
+                <argument>test:integration</argument>
               </arguments>
             </configuration>
           </execution>

@@ -48,7 +48,7 @@ describe('RegisterPage.vue', () => {
     jest.restoreAllMocks()
   })
 
-  it('회원가입 폼이 정상적으로 렌더링됨', () => {
+  it('회원가입 폼이 정상적으로 렌더링된다', () => {
     expect(wrapper.find('.logo').attributes().src)
       .toEqual('/static/images/logo.png')
     expect(wrapper.find('.tagline').text())
@@ -59,13 +59,13 @@ describe('RegisterPage.vue', () => {
     expect(buttonSubmit.text()).toEqual('계정 만들기')
   })
 
-  it('데이터 모델이 초깃값을 정상적으로 가짐', () => {
+  it('데이터 모델이 초깃값을 정상적으로 가진다', () => {
     expect(wrapper.vm.form.username).toEqual('')
     expect(wrapper.vm.form.emailAddress).toEqual('')
     expect(wrapper.vm.form.password).toEqual('')
   })
 
-  it('데이터 모델과 폼 입력 필드 사이의 바인딩 존재', async () => {
+  it('데이터 모델과 폼 입력 필드 사이의 바인딩이 존재한다', async () => {
     const username = 'sckroll'
     const emailAddress = 'sckroll@sckroll.com'
     const password = 'q1w2e3r4'
@@ -82,7 +82,7 @@ describe('RegisterPage.vue', () => {
     expect(fieldPassword.element.value).toEqual(password)
   })
 
-  it('`submitForm` 폼 이벤트 핸들러가 존재', () => {
+  it('`submitForm` 폼 이벤트 핸들러가 존재한다', () => {
     const stub = jest.fn()
 
     // setMethods()는 deprecated된 상태
@@ -93,7 +93,7 @@ describe('RegisterPage.vue', () => {
     expect(stub).toBeCalled()
   })
 
-  it('새로운 사용자라면 회원가입 성공', async () => {
+  it('새로운 사용자라면 회원가입에 성공한다', async () => {
     expect.assertions(2)
     const stub = jest.fn()
     wrapper.vm.$router.push = stub
@@ -107,10 +107,10 @@ describe('RegisterPage.vue', () => {
     await wrapper.vm.$nextTick()
 
     // 로그인 페이지로 리다이렉트
-    expect(stub).toHaveBeenCalledWith({ name: 'LoginPage' })
+    expect(stub).toHaveBeenCalledWith({ name: 'login' })
   })
 
-  it('이미 등록된 사용자라면 회원가입 실패', async () => {
+  it('이미 등록된 사용자라면 회원가입에 실패한다', async () => {
     expect.assertions(3)
 
     // mock에서는 오직 sckroll@sckroll.com만 새로운 사용자
@@ -131,7 +131,7 @@ describe('RegisterPage.vue', () => {
     expect(wrapper.find('.failed').isVisible()).toBe(true)
   })
 
-  it('이메일 주소가 유효하지 않으면 register() 메소드 호출 실패', () => {
+  it('이메일 주소가 유효하지 않으면 register() 메소드 호출에 실패한다', () => {
     wrapper.vm.form.username = 'sckroll'
     wrapper.vm.form.emailAddress = 'bad-email-address'
     wrapper.vm.form.password = 'q1w2e3r4'
@@ -139,7 +139,7 @@ describe('RegisterPage.vue', () => {
     expect(registerSpy).not.toHaveBeenCalled()
   })
 
-  it('사용자 이름이 유효하지 않으면 register() 메소드 호출 실패', () => {
+  it('사용자 이름이 유효하지 않으면 register() 메소드 호출에 실패한다', () => {
     wrapper.vm.form.username = 'a'
     wrapper.vm.form.emailAddress = 'sckroll@sckroll.com'
     wrapper.vm.form.password = 'q1w2e3r4'
@@ -147,7 +147,7 @@ describe('RegisterPage.vue', () => {
     expect(registerSpy).not.toHaveBeenCalled()
   })
 
-  it('비밀번호가 유효하지 않으면 register() 메소드 호출 실패', () => {
+  it('비밀번호가 유효하지 않으면 register() 메소드 호출에 실패한다', () => {
     wrapper.vm.form.username = 'sckroll'
     wrapper.vm.form.emailAddress = 'sckroll@sckroll.com'
     wrapper.vm.form.password = 'bad'

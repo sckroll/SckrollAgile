@@ -48,37 +48,37 @@ public class DefaultMailManagerTests {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void send_이메일_주소가_null이면_실패() {
+	public void send_이메일_주소가_null이면_실패한다() {
 		instance.send(null, "Test subject", "test.ftl");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void send_이메일_주소가_비어있으면_실패() {
+	public void send_이메일_주소가_비어있으면_실패한다() {
 		instance.send("", "Test subject", "test.ftl");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void send_이메일_주제가_null이면_실패() {
+	public void send_이메일_주제가_null이면_실패한다() {
 		instance.send("test@sckroll.com", null, "test.ftl");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void send_이메일_주제가_비어있으면_실패() {
+	public void send_이메일_주제가_비어있으면_실패한다() {
 		instance.send("test@sckroll.com", "", "test.ftl");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void send_템플릿_이름이_null이면_실패() {
+	public void send_템플릿_이름이_null이면_실패한다() {
 		instance.send("test@sckroll.com", "Test subject", null);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void send_템플릿_이름이_비어있으면_실패() {
+	public void send_템플릿_이름이_비어있으면_실패한다() {
 		instance.send("test@sckroll.com", "Test subject", "");
 	}
 
 	@Test
-	public void send_파라미터가_유효하면_성공() {
+	public void send_파라미터가_유효하면_성공한다() {
 		String to = "test@sckroll.com";
 		String subject = "Test subject";
 		String templateName = "test.ftl";

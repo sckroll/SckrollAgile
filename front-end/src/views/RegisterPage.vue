@@ -95,7 +95,7 @@ export default {
 
       // TODO: 데이터 검증
       registrationService.register(this.form).then(() => {
-        this.$router.push({ name: 'LoginPage' })
+        this.$router.push({ name: 'login' })
       }).catch(err => {
         this.errorMessage = '회원가입에 실패하였습니다. 원인: ' + (err.message ? err.message : 'Unknown')
       })

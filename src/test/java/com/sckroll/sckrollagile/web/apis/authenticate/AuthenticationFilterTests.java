@@ -21,7 +21,7 @@ public class AuthenticationFilterTests {
 	private AuthenticationManager authenticationManagerMock;
 
 	@Test(expected = InsufficientAuthenticationException.class)
-	public void attemptAuthentication_요청_바디가_비어있으면_실패()
+	public void attemptAuthentication_요청_바디가_비어있으면_실패한다()
 		throws IOException {
 		MockHttpServletRequest request =
 
@@ -32,7 +32,7 @@ public class AuthenticationFilterTests {
 	}
 
 	@Test(expected = InsufficientAuthenticationException.class)
-	public void attemptAuthentication_요청_바디가_유효하지_않은_JSON_문자열이면_실패()
+	public void attemptAuthentication_요청_바디가_유효하지_않은_JSON_문자열이면_실패한다()
 		throws IOException {
 
 		MockHttpServletRequest request =
@@ -44,7 +44,7 @@ public class AuthenticationFilterTests {
 	}
 
 	@Test
-	public void attemptAuthentication_요청_바디가_유효한_JSON_문자열이면_성공()
+	public void attemptAuthentication_요청_바디가_유효한_JSON_문자열이면_성공한다()
 		throws IOException {
 
 		MockHttpServletRequest request =

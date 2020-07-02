@@ -7,7 +7,7 @@ import org.springframework.util.Assert;
 
 public class UserRegisteredEvent extends DomainEvent {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -7042974872938047313L;
 
 	private User user;
 

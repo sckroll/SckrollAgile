@@ -1,6 +1,5 @@
 package com.sckroll.sckrollagile.domain.model.user;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Objects;
@@ -9,7 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public class SimpleUser implements UserDetails, Serializable {
+public class SimpleUser implements UserDetails {
 
 	private static final long serialVersionUID = 8471886269014308049L;
 

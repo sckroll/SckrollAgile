@@ -28,7 +28,7 @@ public class RegistrationManagementTests {
 	}
 
 	@Test(expected = UsernameExistsException.class)
-	public void register_존재하는_사용자명이_있다면_실패()
+	public void register_존재하는_사용자명이_있다면_실패한다()
 		throws RegistrationException {
 
 		String username = "exist";
@@ -41,7 +41,7 @@ public class RegistrationManagementTests {
 	}
 
 	@Test(expected = EmailAddressExistsException.class)
-	public void register_존재하는_이메일_주소가_있다면_실패()
+	public void register_존재하는_이메일_주소가_있다면_실패한다()
 		throws RegistrationException {
 
 		String username = "test";
@@ -54,7 +54,7 @@ public class RegistrationManagementTests {
 	}
 
 	@Test
-	public void register_이메일_주소에_대문자가_포함되었다면_소문자로_변환_후_성공()
+	public void register_이메일_주소에_대문자가_포함되었다면_소문자로_변환_후_성공한다()
 		throws RegistrationException {
 
 		String username = "test";
@@ -68,7 +68,7 @@ public class RegistrationManagementTests {
 	}
 
 	@Test
-	public void register_새로운_사용자는_성공() throws RegistrationException {
+	public void register_새로운_사용자는_성공한다() throws RegistrationException {
 		String username = "test";
 		String emailAddress = "test@sckroll.com";
 		String password = "testPassword";

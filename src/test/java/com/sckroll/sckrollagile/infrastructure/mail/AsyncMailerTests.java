@@ -22,12 +22,12 @@ public class AsyncMailerTests {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void send_메시지가_null이면_실패() {
+	public void send_메시지가_null이면_실패한다() {
 		instance.send(null);
 	}
 
 	@Test
-	public void send_유효한_메시지이면_성공() {
+	public void send_유효한_메시지이면_성공한다() {
 		String from = "system@sckroll.com";
 		String to = "console.output@sckroll.com";
 		String subject = "TEST MESSAGE";

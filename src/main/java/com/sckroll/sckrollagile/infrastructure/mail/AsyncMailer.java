@@ -44,7 +44,6 @@ public class AsyncMailer implements Mailer {
 			if (message.getTo() != null) {
 				mailMessage.setTo(message.getTo());
 			}
-
 			mailSender.send(mailMessage);
 		} catch (MailException e) {
 			log.error("Failed to send mail message", e);

@@ -10,7 +10,7 @@ describe('services/authentication', () => {
     moxios.uninstall()
   })
 
-  it('`/authentications` API 호출', () => {
+  it('`/authentications` API를 호출한다', () => {
     expect.assertions(1)
     moxios.wait(() => {
       let request = moxios.requests.mostRecent()
@@ -23,7 +23,7 @@ describe('services/authentication', () => {
     return authenticationService.authenticate()
   })
 
-  it('요청에 성공하면 호출한 곳에 응답 전달', () => {
+  it('요청에 성공하면 호출한 곳에 응답을 전달한다', () => {
     expect.assertions(2)
     moxios.wait(() => {
       let request = moxios.requests.mostRecent()
@@ -38,7 +38,7 @@ describe('services/authentication', () => {
     })
   })
 
-  it('요청에 실패하면 호출한 곳에 에러 전파', () => {
+  it('요청에 실패하면 호출한 곳에 에러를 전파한다', () => {
     expect.assertions(2)
     moxios.wait(() => {
       let request = moxios.requests.mostRecent()

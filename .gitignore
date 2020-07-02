@@ -35,3 +35,5 @@ src/main/resources/static/css/
 src/main/resources/static/favicon.ico
 src/main/resources/static/js/
 src/main/resources/templates/index.html
+
+log-file.log

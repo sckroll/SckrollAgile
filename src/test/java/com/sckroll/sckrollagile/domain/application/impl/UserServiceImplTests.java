@@ -47,14 +47,14 @@ public class UserServiceImplTests {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void register_null을_전달하면_실패() throws
+	public void register_null을_전달하면_실패한다() throws
 		RegistrationException {
 
 		instance.register(null);
 	}
 
 	@Test(expected = RegistrationException.class)
-	public void register_존재하는_사용자명이_있다면_실패() throws
+	public void register_존재하는_사용자명이_있다면_실패한다() throws
 		RegistrationException {
 
 		String username = "exist";
@@ -71,7 +71,7 @@ public class UserServiceImplTests {
 	}
 
 	@Test(expected = RegistrationException.class)
-	public void register_존재하는_이메일_주소가_있다면_실패() throws
+	public void register_존재하는_이메일_주소가_있다면_실패한다() throws
 		RegistrationException {
 
 		String username = "test";
@@ -88,7 +88,7 @@ public class UserServiceImplTests {
 	}
 
 	@Test
-	public void register_유효한_명령일_경우_성공() throws RegistrationException {
+	public void register_유효한_명령일_경우_성공한다() throws RegistrationException {
 		String username = "test";
 		String emailAddress = "test@sckroll.com";
 		String password = "testPassword";
@@ -113,7 +113,7 @@ public class UserServiceImplTests {
 	}
 
 	@Test
-	public void loadUserByUsername_사용자명이_비어있으면_실패() {
+	public void loadUserByUsername_사용자명이_비어있으면_실패한다() {
 		Exception exception = null;
 		try {
 			instance.loadUserByUsername("");
@@ -128,7 +128,7 @@ public class UserServiceImplTests {
 	}
 
 	@Test
-	public void loadUserByUsername_사용자명이_존재하지_않으면_실패() {
+	public void loadUserByUsername_사용자명이_존재하지_않으면_실패한다() {
 		String notExistUsername = "notExist";
 		when(userRepositoryMock.findByUsername(notExistUsername)).thenReturn(null);
 		Exception exception = null;
@@ -145,7 +145,7 @@ public class UserServiceImplTests {
 	}
 
 	@Test
-	public void loadUserByUsername_사용자명이_존재하면_성공()
+	public void loadUserByUsername_사용자명이_존재하면_성공한다()
 		throws IllegalAccessException {
 
 		String existUsername = "exist";

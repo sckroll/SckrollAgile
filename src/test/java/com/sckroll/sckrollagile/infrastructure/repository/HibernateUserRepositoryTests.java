@@ -39,28 +39,28 @@ public class HibernateUserRepositoryTests {
 	private UserRepository repository;
 
 	@Test(expected = PersistenceException.class)
-	public void save_사용자명이_비어있으면_실패() {
+	public void save_사용자명이_비어있으면_실패한다() {
 		User invalidUser = User.create(null,
 			"test@sckroll.com", "testPassword");
 		repository.save(invalidUser);
 	}
 
 	@Test(expected = PersistenceException.class)
-	public void save_이메일_주소가_비어있으면_실패() {
+	public void save_이메일_주소가_비어있으면_실패한다() {
 		User invalidUser = User.create("test",
 			null, "testPassword");
 		repository.save(invalidUser);
 	}
 
 	@Test(expected = PersistenceException.class)
-	public void save_비밀번호가_비어있으면_실패() {
+	public void save_비밀번호가_비어있으면_실패한다() {
 		User invalidUser = User.create("test",
 			"test@sckroll.com", null);
 		repository.save(invalidUser);
 	}
 
 	@Test
-	public void save_모두_입력되어있으면_성공() {
+	public void save_모두_입력되어있으면_성공한다() {
 		String username = "test";
 		String emailAddress = "test@sckroll.com";
 		String password = "testPassword";
@@ -76,7 +76,7 @@ public class HibernateUserRepositoryTests {
 	}
 
 	@Test
-	public void save_사용자명이_이미_존재하면_실패() {
+	public void save_사용자명이_이미_존재하면_실패한다() {
 		// 이미 존재하는 사용자를 생성
 		String username = "test";
 		String emailAddress = "test@sckroll.com";
@@ -96,7 +96,7 @@ public class HibernateUserRepositoryTests {
 	}
 
 	@Test
-	public void save_이메일_주소가_이미_존재하면_실패() {
+	public void save_이메일_주소가_이미_존재하면_실패한다() {
 		// 이미 존재하는 사용자를 생성
 		String username = "test";
 		String emailAddress = "test@sckroll.com";
@@ -116,14 +116,14 @@ public class HibernateUserRepositoryTests {
 	}
 
 	@Test
-	public void findByEmailAddress_존재하지_않으면_빈_결과_리턴() {
+	public void findByEmailAddress_존재하지_않으면_빈_결과를_반환한다() {
 		String emailAddress = "test@sckroll.com";
 		User user = repository.findByEmailAddress(emailAddress);
 		assertNull("No user should by found", user);
 	}
 
 	@Test
-	public void findByEmailAddress_존재하면_결과_리턴() {
+	public void findByEmailAddress_존재하면_결과를_반환한다() {
 		String username = "test";
 		String emailAddress = "test@sckroll.com";
 		String password = "testPassword";
@@ -135,14 +135,14 @@ public class HibernateUserRepositoryTests {
 	}
 
 	@Test
-	public void findByUsername_존재하지_않으면_빈_값_리턴() {
+	public void findByUsername_존재하지_않으면_빈_값을_반환한다() {
 		String username = "test";
 		User user = repository.findByUsername(username);
 		assertNull("No user should by found", user);
 	}
 
 	@Test
-	public void findByUsername_존재하면_결과_리턴() {
+	public void findByUsername_존재하면_결과를_반환한다() {
 		String username = "test";
 		String emailAddress = "test@sckroll.com";
 		String password = "testPassword";

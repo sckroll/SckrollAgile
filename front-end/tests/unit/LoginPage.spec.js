@@ -43,7 +43,7 @@ describe('LoginPage.vue', () => {
     jest.restoreAllMocks()
   })
 
-  it('로그인 폼 렌더링', () => {
+  it('로그인 폼을 렌더링한다', () => {
     expect(wrapper.find('.logo').attributes().src)
       .toEqual('/static/images/logo.png')
     expect(wrapper.find('.tagline').text())
@@ -56,12 +56,12 @@ describe('LoginPage.vue', () => {
     expect(wrapper.find('.link-forgot-password')).toBeTruthy()
   })
 
-  it('초깃값을 갖는 데이터 모델 포함', () => {
+  it('초깃값을 갖는 데이터 모델을 포함한다', () => {
     expect(wrapper.vm.form.username).toEqual('')
     expect(wrapper.vm.form.password).toEqual('')
   })
 
-  it('데이터 모델과 연결된 폼 입력을 가짐', async () => {
+  it('데이터 모델과 연결된 폼 입력을 가진다', async () => {
     const username = 'sckroll'
     const password = 'q1w2e3r4'
 
@@ -75,7 +75,7 @@ describe('LoginPage.vue', () => {
     expect(fieldPassword.element.value).toEqual(password)
   })
 
-  it('`submitForm` 폼 제출 핸들러를 가짐', () => {
+  it('`submitForm` 폼 제출 핸들러를 가진다', () => {
     const stub = jest.fn()
 
     // setMethods()는 deprecated된 상태
@@ -86,7 +86,7 @@ describe('LoginPage.vue', () => {
     expect(stub).toBeCalled()
   })
 
-  it('자격이 유효하면 제출 성공', async () => {
+  it('자격이 유효하면 제출에 성공한다', async () => {
     expect.assertions(2)
     const stub = jest.fn()
     wrapper.vm.$router.push = stub
@@ -101,7 +101,7 @@ describe('LoginPage.vue', () => {
     expect(stub).toHaveBeenCalledWith({ name: 'home' })
   })
 
-  it('자격이 유효하지 않으면 제출 실패', async () => {
+  it('자격이 유효하지 않으면 제출에 실패한다', async () => {
     expect.assertions(3)
 
     // mock에서는 'sckroll' 혹은 'sckroll@sckroll.com'과 연결된
@@ -122,7 +122,7 @@ describe('LoginPage.vue', () => {
     expect(wrapper.find('.failed').isVisible()).toBe(true)
   })
 
-  it('유효하지 않은 데이터 제출을 방지하기 위한 검증 존재', async () => {
+  it('유효하지 않은 데이터 제출을 방지하기 위한 검증이 존재한다', async () => {
     // 빈 폼
     wrapper.vm.submitForm()
     expect(authenticateSpy).not.toHaveBeenCalled()

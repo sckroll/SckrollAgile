@@ -36,13 +36,13 @@ public class RegistrationApiControllerTests {
 	private UserService serviceMock;
 
 	@Test
-	public void register_빈_payload는_실패_후_400_리턴() throws Exception {
+	public void register_빈_payload는_실패_후_400을_반환한다() throws Exception {
 		mvc.perform(post("/api/registrations"))
 			.andExpect(status().is(400));
 	}
 
 	@Test
-	public void register_존재하는_사용자명은_실패_후_400_리턴() throws Exception {
+	public void register_존재하는_사용자명은_실패_후_400을_반환한다() throws Exception {
 		RegistrationPayload payload = new RegistrationPayload();
 		payload.setUsername("exist");
 		payload.setEmailAddress("test@sckroll.com");
@@ -61,7 +61,7 @@ public class RegistrationApiControllerTests {
 	}
 
 	@Test
-	public void register_존재하는_이메일_주소는_실패_후_400_리턴() throws Exception {
+	public void register_존재하는_이메일_주소는_실패_후_400을_반환한다() throws Exception {
 		RegistrationPayload payload = new RegistrationPayload();
 		payload.setUsername("test");
 		payload.setEmailAddress("exist@sckroll.com");
@@ -80,7 +80,7 @@ public class RegistrationApiControllerTests {
 	}
 
 	@Test
-	public void register_유효한_payload는_성공_후_201_리턴() throws Exception {
+	public void register_유효한_payload는_성공_후_201을_반환한다() throws Exception {
 		RegistrationPayload payload = new RegistrationPayload();
 		payload.setUsername("test");
 		payload.setEmailAddress("test@sckroll.com");
