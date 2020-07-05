@@ -9,7 +9,7 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class HibernateUserRepository extends HibernateSupport
+public class HibernateUserRepository extends HibernateSupport<User>
 	implements UserRepository {
 
 	public HibernateUserRepository(EntityManager entityManager) {

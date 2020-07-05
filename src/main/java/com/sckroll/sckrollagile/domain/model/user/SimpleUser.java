@@ -12,7 +12,7 @@ public class SimpleUser implements UserDetails {
 
 	private static final long serialVersionUID = 8471886269014308049L;
 
-	private long userId;
+	private UserId userId;
 	private String username;
 	private String password;
 
@@ -22,7 +22,7 @@ public class SimpleUser implements UserDetails {
 		this.password = user.getPassword();
 	}
 
-	public long getUserId() {
+	public UserId getUserId() {
 		return userId;
 	}
 
