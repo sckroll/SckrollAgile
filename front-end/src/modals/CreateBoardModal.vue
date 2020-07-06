@@ -75,7 +75,7 @@ import boardService from '@/services/boards'
 export default {
   name: 'CreatedBoardModal',
   props: ['teamId'],
-  data() {
+  data () {
     return {
       board: {
         name: '',
@@ -94,7 +94,7 @@ export default {
       }
     }
   },
-  mounted() {
+  mounted () {
     $('#createBoardModal').on('shown.bs.modal', () => {
       $('#boardNameInput').trigger('focus')
     })

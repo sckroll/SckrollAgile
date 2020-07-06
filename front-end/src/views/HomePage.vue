@@ -4,7 +4,7 @@
     <div class="boards-container">
       <div class="boards-section">
         <h2 class="section-title">
-          {{ $t('homePage.personalBoards') }}
+          {{ 'homePage.personalBoards' }}
         </h2>
 
         <div class="boards d-flex align-content-start flex-wrap">
@@ -22,7 +22,7 @@
             @click="createBoard()"
           >
             <font-awesome-icon icon="plus" />
-            <div>{{ $t('homePage.createNewBoard') }}</div>
+            <div>{{ 'homePage.createNewBoard' }}</div>
           </div>
         </div>
       </div>
@@ -48,14 +48,14 @@
             @click="createBoard(team)"
           >
             <font-awesome-icon icon="plus" />
-            <div>{{ $t('homePage.createNewBoard') }}</div>
+            <div>{{ 'homePage.createNewBoard' }}</div>
           </div>
         </div>
       </div>
 
       <div class="create-team-wrapper">
         <button class="btn btn-link" @click="createTeam()">
-          + {{ $t('homePage.createNewTeam') }}
+          + {{ 'homePage.createNewTeam' }}
         </button>
       </div>
     </div>
@@ -82,7 +82,7 @@ export default {
     CreateBoardModal,
     CreateTeamModal
   },
-  data() {
+  data () {
     return {
       selectedTeamId: 0
     }
@@ -95,7 +95,7 @@ export default {
   },
   methods: {
     openBoard (board) {
-      this.$router.push({ name: 'board', params: { boardId: board.id }})
+      this.$router.push({ name: 'board', params: { boardId: board.id } })
     },
     createBoard (team) {
       this.selectedTeamId = team ? team.id : 0
@@ -105,7 +105,7 @@ export default {
       $('#createTeamModal').modal('show')
     },
     onBoardCreated (boardId) {
-      this.$router.push({ name: 'board', params: { boardId }})
+      this.$router.push({ name: 'board', params: { boardId } })
     }
   }
 }

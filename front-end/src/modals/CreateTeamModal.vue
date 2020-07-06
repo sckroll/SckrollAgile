@@ -62,10 +62,10 @@ import teamService from '@/services/teams'
 
 export default {
   name: 'CreatedteamModal',
-  data() {
+  data () {
     return {
       team: {
-        name: '',
+        name: ''
       },
       errorMessage: ''
     }
@@ -77,7 +77,7 @@ export default {
       }
     }
   },
-  mounted() {
+  mounted () {
     $('#createTeamModal').on('shown.bs.modal', () => {
       $('#teamNameInput').trigger('focus')
     })

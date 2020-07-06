@@ -2,6 +2,8 @@ package com.sckroll.sckrollagile.domain.application.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import com.sckroll.sckrollagile.domain.application.BoardService;
 import com.sckroll.sckrollagile.domain.application.commands.CreateBoardCommand;
 import com.sckroll.sckrollagile.domain.common.event.DomainEventPublisher;
@@ -11,6 +13,10 @@ import com.sckroll.sckrollagile.domain.model.board.BoardRepository;
 import com.sckroll.sckrollagile.domain.model.board.events.BoardCreatedEvent;
 import com.sckroll.sckrollagile.domain.model.user.UserId;
 
+import org.springframework.stereotype.Service;
+
+@Service
+@Transactional
 public class BoardServiceImpl implements BoardService {
 
 	private BoardRepository boardRepository;
